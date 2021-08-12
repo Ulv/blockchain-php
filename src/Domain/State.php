@@ -16,9 +16,9 @@ class State implements StateInterface
     private $balances = [];
 
     /**
-     * @var array
+     * @var MempoolInterface
      */
-    private $txMempool = [];
+    private $txMempool;
 
     /**
      * @var StorageAdapterInterface
@@ -28,9 +28,10 @@ class State implements StateInterface
     /**
      * @param StorageAdapterInterface $storage
      */
-    public function __construct(StorageAdapterInterface $storage)
+    public function __construct(StorageAdapterInterface $storage, MempoolInterface $mempool)
     {
         $this->storage = $storage;
+        $this->txMempool = $mempool;
 
         $genesis = $this->storage->loadGenesis();
         foreach ($genesis as $customer => $balance) {
@@ -46,7 +47,7 @@ class State implements StateInterface
     public function add(TxInterface $tx): void
     {
         $this->apply($tx);
-        $this->txMempool[] = $tx;
+        $this->txMempool->push($tx);
     }
 
     public function persist()

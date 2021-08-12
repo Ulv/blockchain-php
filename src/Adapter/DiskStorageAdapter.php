@@ -2,6 +2,7 @@
 
 namespace Ulv\Blockchain\Adapter;
 
+use Ulv\Blockchain\Domain\MempoolInterface;
 use Ulv\Blockchain\Domain\TxInterface;
 use Ulv\Blockchain\Exception\InvalidGenesisException;
 use Ulv\Blockchain\Exception\InvalidTxDbException;
@@ -53,7 +54,7 @@ class DiskStorageAdapter implements StorageAdapterInterface
         return $result;
     }
 
-    public function persist(array $txMempool): void
+    public function persist(MempoolInterface $txMempool): void
     {
         $fp = fopen($this->dbPath . '/tx.db', 'wb+');
         if (flock($fp, LOCK_EX)) {
