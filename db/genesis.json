@@ -1,0 +1,7 @@
+{
+  "genesis_time": "2021-08-12T00:00:00.000000000Z",
+  "chain_id": "blockchain-ledger",
+  "balances": {
+    "vova": 1000000
+  }
+}
