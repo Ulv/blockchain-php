@@ -1,0 +1,13 @@
+{"from":"vova","to":"vova","value":2,"data":"reward"}
+{"from":"vova","to":"someone","value":10,"data":""}
+{"from":"someone","to":"vova","value":5,"data":""}
+{"from":"vova","to":"someone","value":100,"data":""}
+{"from":"someone","to":"vova","value":10,"data":""}
+{"from":"vova","to":"someone","value":100,"data":""}
+{"from":"someone","to":"vova","value":10,"data":""}
+{"from":"vova","to":"someone","value":100,"data":""}
+{"from":"someone","to":"vova","value":10,"data":""}
+{"from":"vova","to":"someone","value":100,"data":""}
+{"from":"someone","to":"vova","value":10,"data":""}
+{"from":"vova","to":"someone","value":100,"data":""}
+{"from":"someone","to":"vova","value":10,"data":""}
