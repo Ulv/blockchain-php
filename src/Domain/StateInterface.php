@@ -7,5 +7,9 @@ namespace Ulv\Blockchain\Domain;
  */
 interface StateInterface
 {
+    public function add(TxInterface $tx): void;
 
+    public function persist();
+
+    public function getBalances(): array;
 }

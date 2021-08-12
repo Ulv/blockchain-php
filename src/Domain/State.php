@@ -49,9 +49,14 @@ class State implements StateInterface
         $this->txMempool[] = $tx;
     }
 
-    public function persist(): void
+    public function persist()
     {
         $this->storage->persist($this->txMempool);
+    }
+
+    public function getBalances(): array
+    {
+        return $this->balances;
     }
 
     private function apply(TxInterface $tx): void
@@ -64,10 +69,5 @@ class State implements StateInterface
             $this->balances[$tx->getFrom()] -= $tx->getValue();
             $this->balances[$tx->getTo()]   += $tx->getValue();
         }
-    }
-
-    public function getBalances(): array
-    {
-        return $this->balances;
     }
 }
