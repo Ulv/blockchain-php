@@ -39,14 +39,15 @@ class DiskStorageAdapter implements StorageAdapterInterface
     public function loadTxDb(): array
     {
         $result = [];
-        $handle = fopen($this->dbPath . '/tx.db', 'rb');
-        if ($handle) {
-            while (($line = fgets($handle)) !== false) {
-                $result[] = \json_decode($line, true, JSON_THROW_ON_ERROR);
-            }
-            fclose($handle);
-        } else {
+
+        $txDb = file_get_contents($this->dbPath . '/tx.db');
+        if ($txDb === false) {
             throw new InvalidTxDbException('Can\'t open txDb!');
+        }
+
+        $lines = array_filter(explode("\n", $txDb));
+        foreach ($lines as $line) {
+            $result[] = \json_decode($line, true, JSON_THROW_ON_ERROR);
         }
 
         return $result;
