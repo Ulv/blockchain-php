@@ -14,5 +14,7 @@
             "email": "vladimir.chmil@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "league/climate": "^3.7"
+    }
 }
