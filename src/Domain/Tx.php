@@ -30,6 +30,21 @@ class Tx implements TxInterface
     private $data = self::REWARD;
 
     /**
+     * @var string
+     */
+    private $hash = '';
+
+    /**
+     * @var string
+     */
+    private $prevHash = '';
+
+    /**
+     * @var int
+     */
+    private $position = 1;
+
+    /**
      * @param string $from
      * @param string $to
      * @param int    $value
@@ -54,37 +69,54 @@ class Tx implements TxInterface
         return $this->data === self::REWARD;
     }
 
-    /**
-     * @return string
-     */
     public function getFrom(): string
     {
         return $this->from;
     }
 
-    /**
-     * @return string
-     */
     public function getTo(): string
     {
         return $this->to;
     }
 
-    /**
-     * @return int
-     */
     public function getValue(): int
     {
         return $this->value;
     }
 
+    public function setHash(string $hash): Tx
+    {
+        $this->hash = $hash;
+        return $this;
+    }
+
+    public function setPrevHash(string $prevHash): Tx
+    {
+        $this->prevHash = $prevHash;
+        return $this;
+    }
+
+    public function getPosition(): int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(int $position): Tx
+    {
+        $this->position = $position;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return [
-            'from'  => $this->from,
-            'to'    => $this->to,
-            'value' => $this->value,
-            'data'  => $this->data,
+            'position'  => $this->position,
+            'from'      => $this->from,
+            'to'        => $this->to,
+            'value'     => $this->value,
+            'data'      => $this->data,
+            'hash'      => $this->hash,
+            'prev_hash' => $this->prevHash,
         ];
     }
 

@@ -7,5 +7,7 @@ namespace Ulv\Blockchain\Domain;
  */
 interface MempoolInterface
 {
+    public function push($value);
+
     public function toArray(): array;
 }
