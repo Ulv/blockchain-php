@@ -32,10 +32,10 @@ class Tx implements TxInterface
     /**
      * @param string $from
      * @param string $to
-     * @param int              $value
-     * @param string           $data
+     * @param int    $value
+     * @param string $data
      */
-    public function __construct(string $from,string $to, int $value, string $data = '')
+    public function __construct(string $from, string $to, int $value, string $data = '')
     {
         $this->from  = $from;
         $this->to    = $to;
@@ -78,13 +78,18 @@ class Tx implements TxInterface
         return $this->value;
     }
 
-    public function serialize(): string
+    public function toArray(): array
     {
-        return \json_encode([
+        return [
             'from'  => $this->from,
             'to'    => $this->to,
             'value' => $this->value,
             'data'  => $this->data,
-        ], JSON_THROW_ON_ERROR);
+        ];
+    }
+
+    public function serialize(): string
+    {
+        return \json_encode($this->toArray(), JSON_THROW_ON_ERROR);
     }
 }

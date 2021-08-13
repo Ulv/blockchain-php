@@ -7,5 +7,5 @@ namespace Ulv\Blockchain\Domain;
  */
 interface MempoolInterface
 {
-//    public function add(TxInterface $tx): void;
+    public function toArray(): array;
 }

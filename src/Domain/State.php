@@ -60,6 +60,11 @@ class State implements StateInterface
         return $this->balances;
     }
 
+    public function getTxMempool(): MempoolInterface
+    {
+        return $this->txMempool;
+    }
+
     private function apply(TxInterface $tx): void
     {
         if ($tx->isReward() && $tx->getFrom() === $tx->getTo()) {

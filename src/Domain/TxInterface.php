@@ -16,4 +16,6 @@ interface TxInterface
     public function getTo(): string;
 
     public function getValue(): int;
+
+    public function toArray(): array;
 }
